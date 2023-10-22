@@ -193,5 +193,23 @@ export default {
   // },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  // build: {},
+
+  build: {
+    extend(config, { isClient }) {
+      config.module.rules.push({
+        test: /\.(cjs|mjs)$/,
+        exclude: {
+          and: [/node_modules/],
+          not: [/pathe/],
+        },
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [['@babel/preset-env', { targets: 'ie 11' }]],
+          },
+        },
+      })
+    },
+  },
 }
