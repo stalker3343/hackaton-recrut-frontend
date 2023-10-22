@@ -1,5 +1,8 @@
 export default {
   target: 'static',
+  generate: {
+    fallback: true,
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - center-invest-dock',
