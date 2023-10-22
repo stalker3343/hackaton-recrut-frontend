@@ -1,6 +1,8 @@
 <template>
   <div>
     <div class="card-req" @click="isCreateEditSheetOpen = true">
+      <div class="text-caption">Заявка #{{ item.id }}</div>
+
       <div class="card-req-header">
         {{ item.user.id }}
       </div>
@@ -90,8 +92,8 @@
               </div>
             </v-card>
 
-            <div v-if="item.status === 'tested'" class="mt-4">
-              <h3>Текущие тесты</h3>
+            <div v-if="item.status !== 'entering'" class="mt-4">
+              <h3>Тесты</h3>
               <v-data-table
                 hide-default-header
                 hide-default-footer
@@ -100,6 +102,28 @@
                 class="elevation-1"
               />
             </div>
+
+            <v-list three-line>
+              <v-list-item v-if="item.hr">
+                <v-list-item-content>
+                  <v-list-item-title>HR</v-list-item-title>
+                  <v-list-item-subtitle>
+                    {{ item.hr.first_name }}
+                    {{ item.hr.last_name }}
+                  </v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
+
+              <v-list-item v-if="item.tech_lead">
+                <v-list-item-content>
+                  <v-list-item-title>Тех. специалист</v-list-item-title>
+                  <v-list-item-subtitle>
+                    {{ item.tech_lead.first_name }}
+                    {{ item.tech_lead.last_name }}
+                  </v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
           </v-tab-item>
           <v-tab-item>
             <chat-component :req-id="item.id" />

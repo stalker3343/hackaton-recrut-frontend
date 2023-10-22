@@ -21,13 +21,13 @@ export default function ({ $axios }, inject) {
     },
 
     addHr(requestId, userId) {
-      return $axios.$post(
+      return $axios.$put(
         `http://194.87.144.227:8000/grade-requests/${requestId}/hr/${userId}`
       )
     },
     addTechLead(requestId, userId) {
-      return $axios.$post(
-        `http://194.87.144.227:8000/grade-requests/${requestId}/addTechLead/${userId}`
+      return $axios.$put(
+        `http://194.87.144.227:8000/grade-requests/${requestId}/tech_lead/${userId}`
       )
     },
 

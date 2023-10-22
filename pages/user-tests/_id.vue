@@ -115,7 +115,7 @@ export default {
         })
 
         await this.$gradeRequestsRepository.update(
-          this.$router.query.requestId,
+          this.$route.query.requestId,
           {
             status: 'completed',
           }

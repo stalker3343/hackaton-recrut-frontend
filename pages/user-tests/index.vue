@@ -39,7 +39,7 @@
                 :to="{
                   name: 'user-tests-id',
                   params: { id: spec.id },
-                  query: { requestId: spec.requestId },
+                  query: { requestId: req.id },
                 }"
                 >Пройти
               </v-btn>

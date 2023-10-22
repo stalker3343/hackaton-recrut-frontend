@@ -222,9 +222,9 @@ export const STATUSES = {
   tested: 'На тестировании',
   completed: 'Тестирование выполнено',
   department_interview: 'Интервью с HR',
-  department_interview_completed: 'Интервью выполнено',
+  // department_interview_completed: 'Интервью выполнено',
   tech_lead_interview: 'Интервью с тех. специалистом',
-  tech_lead_interview_completed: 'Интервью с тех. специалистом',
+  // tech_lead_interview_completed: 'Интервью с тех. специалистом',
 }
 
 export const sortByField = (property) => {
