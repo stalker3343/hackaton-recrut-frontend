@@ -153,9 +153,9 @@ export default {
   ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
-  axios: {
-    proxy: true,
-  },
+  // axios: {
+  //   proxy: true,
+  // },
   proxy: {
     // '/api': {
     //   target: process.env.BASE_URL,
@@ -164,8 +164,7 @@ export default {
     //     '^/api': '',
     //   },
     // },
-
-    '/api': process.env.BASE_URL,
+    // '/api': process.env.BASE_URL,
     // '/auth': process.env.BASE_URL,
   },
   vuetify: {
