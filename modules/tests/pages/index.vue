@@ -113,19 +113,19 @@ export default {
       isAddQuestionDialogOpen: false,
       headersQa: [
         {
-          text: 'title',
+          text: 'Вопрос',
           value: 'title',
         },
         {
-          text: 'description',
+          text: 'Описание',
           value: 'description',
         },
         {
-          text: 'level',
+          text: 'Сложность',
           value: 'level',
         },
         {
-          text: 'type',
+          text: 'Тип вопроса',
           value: 'type',
         },
         {
