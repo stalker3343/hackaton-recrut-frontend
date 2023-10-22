@@ -85,11 +85,44 @@ export default defineComponent({
     const allCompletedTests = await $gradeRequestsRepository.results()
     // grade_request_id test_id
     const stages = []
+
+    const testsResults = {}
+    allCompletedTests.forEach((el) => {
+      if (testsResults[el.grade_request_id]) {
+        testsResults[el.grade_request_id][el.test_id] = el.test_result
+      } else {
+        testsResults[el.grade_request_id] = {
+          [el.test_id]: el.test_result,
+        }
+      }
+      // testsResults[el.grade_request_id]
+    })
+
     for (const [key, value] of Object.entries(STATUSES)) {
       stages.push({
         title: value,
         id: key,
-        gradeRequests: res.filter((el) => el.status === key),
+        gradeRequests: res
+          .filter((el) => el.status === key)
+          .map((request) => {
+            return {
+              ...request,
+              tests: request.tests.map((test) => {
+                const points = testsResults[request.id] && [
+                  testsResults[request.id][test.id],
+                ]
+                if (points) {
+                  return {
+                    ...test,
+                    complited: true,
+                    complitedPoints: testsResults[request.id][test.id],
+                  }
+                } else {
+                  return test
+                }
+              }),
+            }
+          }),
       })
     }
 
@@ -97,6 +130,7 @@ export default defineComponent({
       stages,
       testsList,
       allUsers,
+      testsResults,
     }
     // eslint-disable-next-line no-prototype-builtins
   },
@@ -116,11 +150,31 @@ export default defineComponent({
     },
     getStages(res) {
       const stages = []
-      for (const [key, value] of Object.entries(this.STATUSES)) {
+      for (const [key, value] of Object.entries(STATUSES)) {
         stages.push({
           title: value,
           id: key,
-          gradeRequests: res.filter((el) => el.status === key),
+          gradeRequests: res
+            .filter((el) => el.status === key)
+            .map((request) => {
+              return {
+                ...request,
+                tests: request.tests.map((test) => {
+                  const points = this.testsResults[request.id] && [
+                    this.testsResults[request.id][test.id],
+                  ]
+                  if (points) {
+                    return {
+                      ...test,
+                      complited: true,
+                      complitedPoints: this.testsResults[request.id][test.id],
+                    }
+                  } else {
+                    return test
+                  }
+                }),
+              }
+            }),
         })
       }
       return stages

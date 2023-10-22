@@ -6,6 +6,21 @@
       </div>
       {{ typeToRus[item.type] }} {{ item.specialization.name }}
       <!-- {{ item.user.id }} -->
+      <template v-if="item.tests.length">
+        <h3 class="mt-2">Тесты</h3>
+        <div
+          v-for="(test, key) in item.tests"
+          :key="key"
+          class="d-flex justify-space-between"
+        >
+          <div>
+            {{ test.title }}
+          </div>
+          <div>
+            {{ test.complitedPoints }}
+          </div>
+        </div>
+      </template>
     </div>
     <flag-right-sheet v-model="isCreateEditSheetOpen" width="40%">
       <v-tabs v-model="tab">

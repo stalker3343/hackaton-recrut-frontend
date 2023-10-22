@@ -114,6 +114,13 @@ export default {
           text: 'Тест пройден, ожидайте ответа от HR',
         })
 
+        await this.$gradeRequestsRepository.update(
+          this.$router.query.requestId,
+          {
+            status: 'completed',
+          }
+        )
+
         this.$router.push({ name: 'user-tests' })
       } catch (error) {
         this.$notify.error({
