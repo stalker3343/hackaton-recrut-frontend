@@ -9,7 +9,7 @@
           <v-chip class="req-wrapper-status">
             {{ STATUSES[spec.status] }}</v-chip
           >
-          <div>Заявка #{{ spec.id }}</div>
+          <div>Заявка №{{ spec.id }}</div>
           <v-list three-line>
             <v-list-item>
               <v-list-item-content>
