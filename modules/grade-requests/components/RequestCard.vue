@@ -77,7 +77,7 @@
                     item-text="first_name"
                     placeholder="HR"
                     :height="40"
-                    :items="HR"
+                    :items="techLead"
                   />
                 </div>
 
